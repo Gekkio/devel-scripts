@@ -1,0 +1,8 @@
+#!/bin/sh
+
+PID=`ps -C java -o pid,command |grep tomcat | sed -e 's/^ *//g' | cut -f 1 -d ' '`
+
+if [ -n "$PID" ]; then
+	echo Killing $PID...
+	kill -s KILL $PID
+fi

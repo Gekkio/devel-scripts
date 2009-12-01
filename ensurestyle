@@ -1,0 +1,7 @@
+#!/bin/sh
+
+CMD_TRAILWHITESPACE="s/[ \t]*$//"
+CMD_EXPANDTAB="s/\t/  /g"
+
+find -name "*.scala" -exec sed -i -e "$CMD_EXPANDTAB" -e "$CMD_TRAILWHITESPACE" {} \;
+find -name "*.java" -exec sed -i -e "$CMD_TRAILWHITESPACE" {} \;
