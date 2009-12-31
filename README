@@ -1,0 +1,39 @@
+/--------------------\
+| Supported packages |
+\--------------------/
+
+--- Apache Ant
+
+Symlink: ant
+Symlinked binaries: ant
+
+--- Apache Maven
+
+Symlink: maven
+Symlinked binaries: mvn
+
+--- JRebel
+
+Symlink: jrebel
+
+--- Scala
+
+Symlink: scala
+Symlinked binaries: fsc, scala, scalac, scaladoc
+Symlinked files: VIM scala support files
+
+--- Simple Build Tool
+
+Symlink: sbt
+Supports: jrebel, spring-instrument
+Installed files: sbt launcher script
+
+--- Simple Build Tool (experimental version)
+
+Symlink: xsbt
+Supports: jrebel, spring-instrument
+Installed files: xsbt launcher script
+
+--- Spring Instrument
+
+Symlink: spring-instrument
