@@ -7,6 +7,10 @@ SPRING_INSTRUMENT=`dirname $0`/symlinks/spring-instrument
 
 JAVA_OPTS="-XX:MaxPermSize=256m -Xmx256M"
 
+if [ `uname -m` = "x86_64" ]; then
+  JAVA_OPTS="$JAVA_OPTS -XX:+UseCompressedOops"
+fi
+
 if [ -f "$JREBEL" ]; then
   JAVA_OPTS="$JAVA_OPTS -noverify -javaagent:$JREBEL"
 fi
