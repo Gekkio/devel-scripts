@@ -1,0 +1,23 @@
+#!/bin/sh
+
+if [ -z "`echo $DISABLED | grep -w java`" ]; then
+  if [ -z "$JAVA_CMD" ]; then
+    if [ "$JAVA_HOME" ]; then
+      JAVA_CMD="$JAVA_HOME"/bin/java
+    elif [ "$JDK_HOME" ]; then
+      JAVA_CMD="$JDK_HOME"/bin/java
+    elif [ `which java` ]; then
+      JAVA_CMD=`which java`
+    fi
+  fi
+fi
+
+if [ "`echo $REQUIRED | grep -w java`" ]; then
+  if [ -z "$JAVA_CMD" ]; then
+    echo No Java found!
+    exit 1
+  elif [ ! -f "$JAVA_CMD" ]; then
+    echo Not a valid java executable: $JAVA_CMD
+    exit 1
+  fi
+fi

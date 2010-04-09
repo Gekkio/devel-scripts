@@ -1,0 +1,16 @@
+#!/bin/sh
+
+BASE=`dirname $0`
+REQUIRED="$REQUIRED java maven"
+
+. $BASE/common/java
+. $BASE/common/maven
+. $BASE/common/jrebel
+
+MAVEN_OPTS="-XX:MaxPermSize=256m -Xmx256M"
+
+if [ -f "$JREBEL_LIB" ]; then
+  MAVEN_OPTS="$MAVEN_OPTS -noverify -javaagent:$JREBEL_LIB"
+fi
+
+MAVEN_OPTS="$MAVEN_OPTS" $MAVEN_CMD "$@"

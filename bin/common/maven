@@ -1,0 +1,23 @@
+#!/bin/sh
+
+if [ -z "`echo $DISABLED | grep -w maven`" ]; then
+  if [ -z "$MAVEN_CMD" ]; then
+    if [ "$MAVEN_HOME" ]; then
+      MAVEN_CMD="$MAVEN_HOME"/bin/mvn
+    elif [ "$M2_HOME" ]; then
+      MAVEN_CMD="$M2_HOME"/bin/mvn
+    elif [ "$BASE" ]; then
+      MAVEN_CMD="$BASE/symlinks/maven/bin/mvn"
+    fi
+  fi
+fi
+
+if [ "`echo $REQUIRED | grep -w maven`" ]; then
+  if [ -z "$MAVEN_CMD" ]; then
+    echo No Maven found!
+    exit 1
+  elif [ ! -f "$MAVEN_CMD" ]; then
+    echo Not a valid Maven executable: $MAVEN_CMD
+    exit 1
+  fi
+fi

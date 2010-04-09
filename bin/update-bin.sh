@@ -15,7 +15,6 @@ mkdir -p -v $HOME/.vim/indent
 mkdir -p -v $HOME/.vim/syntax
 
 update_symlink "ant/bin/ant" "bin"
-update_symlink "maven/bin/mvn" "bin"
 update_symlink "scala/bin/fsc" "bin"
 update_symlink "scala/bin/scala" "bin"
 update_symlink "scala/bin/scalac" "bin"
