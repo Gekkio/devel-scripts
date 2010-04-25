@@ -1,0 +1,25 @@
+#!/bin/sh
+
+BASE=`dirname $0`
+REQUIRED="$REQUIRED java"
+
+. $BASE/common/java
+
+LIQUIBASE_HOME=`dirname $0`/symlinks/liquibase
+
+if [ ! -d "$LIQUIBASE_HOME"]; then
+  echo "Not a valid liquibase distribution: $LIQUIBASE_HOME"
+  exit 1
+fi
+
+CP=.
+for i in "$LIQUIBASE_HOME"/liquibase*.jar; do
+  CP="$CP":"$i"
+done
+for i in "$LIQUIBASE_HOME"/lib/*.jar; do
+  CP="$CP":"$i"
+done
+
+JAVA_OPTS="-XX:MaxPermSize=256m -Xmx256M"
+
+$JAVA_CMD $JAVA_OPTS -cp $CP liquibase.commandline.Main $@
