@@ -1,0 +1,21 @@
+#!/bin/sh
+
+if [ -z "`echo $DISABLED | grep -w clojure`" ]; then
+  if [ -z "$CLOJURE_LIB" ]; then
+    if [ "$CLOJURE_HOME" ]; then
+      CLOJURE_LIB="$CLOJURE_HOME/clojure.jar"
+    elif [ "$BASE" ]; then
+      CLOJURE_LIB="$BASE/symlinks/clojure/clojure.jar"
+    fi
+  fi
+fi
+
+if [ "`echo $REQUIRED | grep -w clojure`" ]; then
+  if [ -z "$CLOJURE_LIB" ]; then
+    echo No clojure.jar found!
+    exit 1
+  elif [ ! -f "$CLOJURE_LIB" ]; then
+    echo Not a valid clojure.jar: $CLOJURE_LIB
+    exit 1
+  fi
+fi

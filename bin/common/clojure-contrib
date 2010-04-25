@@ -1,0 +1,21 @@
+#!/bin/sh
+
+if [ -z "`echo $DISABLED | grep -w clojure-contrib`" ]; then
+  if [ -z "$CLOJURE_CONTRIB_LIB" ]; then
+    if [ "$CLOJURE_CONTRIB_HOME" ]; then
+      CLOJURE_CONTRIB_LIB="$CLOJURE_CONTRIB_HOME/clojure-contrib.jar"
+    elif [ "$BASE" ]; then
+      CLOJURE_CONTRIB_LIB="$BASE/symlinks/clojure-contrib/clojure-contrib.jar"
+    fi
+  fi
+fi
+
+if [ "`echo $REQUIRED | grep -w clojure-contrib`" ]; then
+  if [ -z "$CLOJURE_CONTRIB_LIB" ]; then
+    echo No clojure-contrib.jar found!
+    exit 1
+  elif [ ! -f "$CLOJURE_CONTRIB_LIB" ]; then
+    echo Not a valid clojure-contrib.jar: $CLOJURE_CONTRIB_LIB
+    exit 1
+  fi
+fi
