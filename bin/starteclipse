@@ -2,11 +2,16 @@
 #
 # Workaround script for GTK+ vs. Eclipse problems in Karmic
 
-ECLIPSE=$HOME/bin/packages/eclipse/eclipse
+BASE=`dirname $0`
+REQUIRED="$REQUIRED java"
 
-if [ ! -f "$ECLIPSE" ]; then
-  echo "Could not find Eclipse in $ECLIPSE"
+. $BASE/common/java
+
+ECLIPSE_CMD=$BASE/packages/eclipse/eclipse
+
+if [ ! -f "$ECLIPSE_CMD" ]; then
+  echo "Could not find Eclipse in $ECLIPSE_CMD"
   exit 1
 fi
 
-GDK_NATIVE_WINDOWS=true $ECLIPSE
+$ECLIPSE_CMD -vm $JAVA_CMD
