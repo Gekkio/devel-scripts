@@ -5,7 +5,7 @@ REQUIRED="$REQUIRED java"
 
 . $BASE/common/java
 
-LIQUIBASE_HOME=`dirname $0`/symlinks/liquibase
+LIQUIBASE_HOME=$BASE/symlinks/liquibase
 
 if [ ! -d "$LIQUIBASE_HOME"]; then
   echo "Not a valid liquibase distribution: $LIQUIBASE_HOME"

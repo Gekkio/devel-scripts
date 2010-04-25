@@ -6,9 +6,9 @@ REQUIRED="$REQUIRED java"
 . $BASE/common/java
 . $BASE/common/jrebel
 
-SBT_LAUNCHER=`dirname $0`/symlinks/sbt
+SBT_LAUNCHER=$BASE/symlinks/sbt
 
-SPRING_INSTRUMENT=`dirname $0`/symlinks/spring-instrument
+SPRING_INSTRUMENT=$BASE/symlinks/spring-instrument
 
 JAVA_OPTS="-XX:MaxPermSize=256m -Xmx256M"
 
