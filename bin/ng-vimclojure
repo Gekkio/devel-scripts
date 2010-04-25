@@ -1,0 +1,24 @@
+#!/bin/sh
+
+BASE=`dirname $0`
+REQUIRED="$REQUIRED java clojure clojure-contrib"
+
+. $BASE/common/java
+
+VIMCLOJURE_HOME=$BASE/symlinks/vimclojure
+
+if [ ! -d "$VIMCLOJURE_HOME" ]; then
+  echo "Not a valid vimclojure distribution: $VIMCLOJURE_HOME"
+  exit 1
+fi
+
+VIMCLOJURE_LIB=$VIMCLOJURE_HOME/build/vimclojure.jar
+
+if [ ! -f "$VIMCLOJURE_LIB" ]; then
+  echo "Not a valid vimclojure.jar: $VIMCLOJURE_LIB"
+  exit 1
+fi
+
+JAVA_OPTS="-XX:MaxPermSize=256m -Xmx256M"
+
+$JAVA_CMD $JAVA_OPTS -cp $CLOJURE_LIB:$CLOJURE_CONTRIB_LIB:$VIMCLOJURE_LIB:$CP com.martiansoftware.nailgun.NGServer 127.0.0.1
