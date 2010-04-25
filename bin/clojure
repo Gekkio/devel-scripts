@@ -1,0 +1,24 @@
+#!/bin/sh
+
+BASE=`dirname $0`
+REQUIRED="$REQUIRED java clojure"
+
+. $BASE/common/java
+. $BASE/common/clojure
+. $BASE/common/clojure-contrib
+. $BASE/common/jrebel
+
+
+JAVA_OPTS="-XX:MaxPermSize=256m -Xmx256M"
+
+if [ -f "$JREBEL_LIB" ]; then
+  JAVA_OPTS="$JAVA_OPTS -noverify -javaagent:$JREBEL_LIB"
+fi
+
+CP=$CLOJURE_LIB
+
+if [ "$CLOJURE_CONTRIB_LIB" ]; then
+  CP=$CP:$CLOJURE_CONTRIB_LIB
+fi
+
+$JAVA_CMD $JAVA_OPTS -cp $CP clojure.main "$@"
