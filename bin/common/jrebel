@@ -15,7 +15,7 @@ if [ "`echo $REQUIRED | grep -w jrebel`" ]; then
     echo No jrebel.jar found!
     exit 1
   elif [ ! -f "$JREBEL_LIB" ]; then
-    echo Not a valid jrebel.jar executable: $JREBEL_LIB
+    echo Not a valid jrebel.jar: $JREBEL_LIB
     exit 1
   fi
 fi
