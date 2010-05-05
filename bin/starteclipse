@@ -14,4 +14,4 @@ if [ ! -f "$ECLIPSE_CMD" ]; then
   exit 1
 fi
 
-$ECLIPSE_CMD -vm $JAVA_CMD
+$ECLIPSE_CMD -vm $JAVA_CMD "$@"
