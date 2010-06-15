@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PID=`ps -C java -o pid,command |grep 'org\.eclipse' | sed -e 's/^ *//g' | cut -f 1 -d ' '`
+PID=`ps -C java -o pid,command |grep 'org\.eclipse\.equinox\.launcher' | sed -e 's/^ *//g' | cut -f 1 -d ' '`
 
 if [ -n "$PID" ]; then
 	echo Killing $PID...
