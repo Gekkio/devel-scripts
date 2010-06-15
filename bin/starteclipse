@@ -1,6 +1,5 @@
-#!/bin/sh
+#!/bin/bash
 #
-# Workaround script for GTK+ vs. Eclipse problems in Karmic
 
 BASE=`dirname $0`
 REQUIRED="$REQUIRED java"
@@ -14,4 +13,25 @@ if [ ! -f "$ECLIPSE_CMD" ]; then
   exit 1
 fi
 
-$ECLIPSE_CMD -vm $JAVA_CMD "$@"
+WORKSPACE=$BASE/symlinks/eclipse-workspace
+WORKSPACE_RAM=$BASE/symlinks/eclipse-workspace-ram
+
+if [ -h "$WORKSPACE" ] && [ -h "$WORKSPACE_RAM" ]; then
+  # Create symlink target if it doesn't exist
+  TARGET=`readlink -m "$WORKSPACE_RAM"`
+  if [ ! -d "$TARGET" ]; then
+    mkdir -p "$TARGET"
+  fi
+
+  (
+    flock -xn 200
+    if [ "$?" = "1" ]; then
+      exit 1
+    fi
+    rsync --delete-after -a "$WORKSPACE"/ "$WORKSPACE_RAM"/
+    $ECLIPSE_CMD -vm $JAVA_CMD $@
+    rsync --delete-after -a "$WORKSPACE_RAM"/ "$WORKSPACE"/
+  ) 200>$BASE/eclipse.lck
+else
+    $ECLIPSE_CMD -vm $JAVA_CMD $@
+fi
