@@ -7,7 +7,7 @@ REQUIRED="$REQUIRED java"
 
 LIQUIBASE_HOME=$BASE/symlinks/liquibase
 
-if [ ! -d "$LIQUIBASE_HOME"]; then
+if [ ! -d "$LIQUIBASE_HOME" ]; then
   echo "Not a valid liquibase distribution: $LIQUIBASE_HOME"
   exit 1
 fi
@@ -22,4 +22,4 @@ done
 
 JAVA_OPTS="-XX:MaxPermSize=256m -Xmx256M"
 
-$JAVA_CMD $JAVA_OPTS -cp $CP liquibase.commandline.Main $@
+$JAVA_CMD $JAVA_OPTS -cp $CP liquibase.integration.commandline.Main $@
