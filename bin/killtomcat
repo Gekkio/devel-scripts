@@ -1,8 +1,12 @@
 #!/bin/sh
 
+BASE=`dirname $0`
+
+. $BASE/common/notify
+
 PID=`ps -C java -o pid,command |grep tomcat | sed -e 's/^ *//g' | cut -f 1 -d ' '`
 
 if [ -n "$PID" ]; then
-	echo Killing $PID...
+	notify "Killing $PID..." "emotes/face-devilish.svg"
 	kill -s KILL $PID
 fi

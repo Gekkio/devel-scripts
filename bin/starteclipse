@@ -5,11 +5,12 @@ BASE=`dirname $0`
 REQUIRED="$REQUIRED java"
 
 . $BASE/common/java
+. $BASE/common/notify
 
 ECLIPSE_CMD=$BASE/packages/eclipse/eclipse
 
 if [ ! -f "$ECLIPSE_CMD" ]; then
-  echo "Could not find Eclipse in $ECLIPSE_CMD"
+  notify "Could not find Eclipse in $ECLIPSE_CMD" "status/messagebox_critical.svg"
   exit 1
 fi
 
@@ -26,6 +27,7 @@ if [ -h "$WORKSPACE" ] && [ -h "$WORKSPACE_RAM" ]; then
   (
     flock -xn 200
     if [ "$?" = "1" ]; then
+      notify "Eclipse is already running" "status/messagebox_warning.svg"
       exit 1
     fi
     rsync --delete-after -a "$WORKSPACE"/ "$WORKSPACE_RAM"/

@@ -4,11 +4,12 @@ BASE=`dirname $0`
 REQUIRED="$REQUIRED java"
 
 . $BASE/common/java
+. $BASE/common/notify
 
 LIQUIBASE_HOME=$BASE/symlinks/liquibase
 
 if [ ! -d "$LIQUIBASE_HOME" ]; then
-  echo "Not a valid liquibase distribution: $LIQUIBASE_HOME"
+  notify "Not a valid liquibase distribution: $LIQUIBASE_HOME"
   exit 1
 fi
 

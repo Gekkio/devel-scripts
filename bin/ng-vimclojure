@@ -4,18 +4,19 @@ BASE=`dirname $0`
 REQUIRED="$REQUIRED java clojure clojure-contrib"
 
 . $BASE/common/java
+. $BASE/common/notify
 
 VIMCLOJURE_HOME=$BASE/symlinks/vimclojure
 
 if [ ! -d "$VIMCLOJURE_HOME" ]; then
-  echo "Not a valid vimclojure distribution: $VIMCLOJURE_HOME"
+  notify "Not a valid vimclojure distribution: $VIMCLOJURE_HOME" "status/messagebox_critical.svg"
   exit 1
 fi
 
 VIMCLOJURE_LIB=$VIMCLOJURE_HOME/build/vimclojure.jar
 
 if [ ! -f "$VIMCLOJURE_LIB" ]; then
-  echo "Not a valid vimclojure.jar: $VIMCLOJURE_LIB"
+  notify "Not a valid vimclojure.jar: $VIMCLOJURE_LIB" "status/messagebox_critical.svg"
   exit 1
 fi
 
