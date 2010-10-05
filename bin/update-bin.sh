@@ -8,6 +8,15 @@ update_symlink() {
   fi
 }
 
+update_launcher() {
+  TARGET="$HOME/bin/symlinks/$1"
+  LAUNCHER="$HOME/bin/launchers/$2"
+  LINK="$HOME/$3"
+  if [ -e "$TARGET" ]; then
+    ln -f -v -s "$LAUNCHER" "$LINK"
+  fi
+}
+
 mkdir -p -v $HOME/bin/packages
 mkdir -p -v $HOME/bin/symlinks
 mkdir -p -v $HOME/.vim/ftdetect
@@ -22,3 +31,10 @@ update_symlink "scala/bin/scaladoc" "bin"
 update_symlink "scala/misc/scala-tool-support/vim/ftdetect/scala.vim" ".vim/ftdetect"
 update_symlink "scala/misc/scala-tool-support/vim/indent/scala.vim" ".vim/indent"
 update_symlink "scala/misc/scala-tool-support/vim/syntax/scala.vim" ".vim/syntax"
+
+update_launcher "clojure" "clojure" "bin"
+update_launcher "eclipse" "starteclipse" "bin"
+update_launcher "liquibase" "liquibase" "bin"
+update_launcher "maven" "mvn" "bin"
+update_launcher "sbt" "sbt" "bin"
+update_launcher "vimclojure" "ng-vimclojure" "bin"
