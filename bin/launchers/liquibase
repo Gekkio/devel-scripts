@@ -21,6 +21,6 @@ for i in "$LIQUIBASE_HOME"/lib/*.jar; do
   CP="$CP":"$i"
 done
 
-JAVA_OPTS="-XX:MaxPermSize=256m -Xmx256M"
+JAVA_OPTS="-XX:MaxPermSize=256m -Xmx256M $JAVA_OPTS"
 
 $JAVA_CMD $JAVA_OPTS -cp $CP liquibase.integration.commandline.Main $@

@@ -10,14 +10,14 @@ SBT_LAUNCHER=$BASE/symlinks/sbt
 
 SPRING_INSTRUMENT=$BASE/symlinks/spring-instrument
 
-JAVA_OPTS="-XX:MaxPermSize=256m -Xmx256M"
+JAVA_OPTS="-XX:MaxPermSize=256m -Xmx256M $JAVA_OPTS"
 
 if [ -f "$JREBEL_LIB" ]; then
-  JAVA_OPTS="$JAVA_OPTS -noverify -javaagent:$JREBEL_LIB"
+  JAVA_OPTS="-noverify -javaagent:$JREBEL_LIB $JAVA_OPTS"
 fi
 
 if [ -f "$SPRING_INSTRUMENT" ]; then
-  JAVA_OPTS="$JAVA_OPTS -javaagent:$SPRING_INSTRUMENT"
+  JAVA_OPTS="-javaagent:$SPRING_INSTRUMENT $JAVA_OPTS"
 fi
 
 $JAVA_CMD $JAVA_OPTS -jar $SBT_LAUNCHER "$@"

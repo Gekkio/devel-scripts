@@ -20,6 +20,6 @@ if [ ! -f "$VIMCLOJURE_LIB" ]; then
   exit 1
 fi
 
-JAVA_OPTS="-XX:MaxPermSize=256m -Xmx256M"
+JAVA_OPTS="-XX:MaxPermSize=256m -Xmx256M $JAVA_OPTS"
 
 $JAVA_CMD $JAVA_OPTS -cp $CLOJURE_LIB:$CLOJURE_CONTRIB_LIB:$VIMCLOJURE_LIB:$CP com.martiansoftware.nailgun.NGServer 127.0.0.1

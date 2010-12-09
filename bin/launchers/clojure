@@ -9,10 +9,10 @@ REQUIRED="$REQUIRED java clojure"
 . $BASE/common/jrebel
 
 
-JAVA_OPTS="-XX:MaxPermSize=256m -Xmx256M"
+JAVA_OPTS="-XX:MaxPermSize=256m -Xmx256M $JAVA_OPTS"
 
 if [ -f "$JREBEL_LIB" ]; then
-  JAVA_OPTS="$JAVA_OPTS -noverify -javaagent:$JREBEL_LIB"
+  JAVA_OPTS="-noverify -javaagent:$JREBEL_LIB $JAVA_OPTS"
 fi
 
 CP=$CLOJURE_LIB
