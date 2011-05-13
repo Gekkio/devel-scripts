@@ -19,9 +19,6 @@ update_launcher() {
 
 mkdir -p -v $HOME/bin/packages
 mkdir -p -v $HOME/bin/symlinks
-mkdir -p -v $HOME/.vim/ftdetect
-mkdir -p -v $HOME/.vim/indent
-mkdir -p -v $HOME/.vim/syntax
 
 update_symlink "ant/bin/ant" "bin"
 
