@@ -10,7 +10,23 @@ Symlinked binaries: ant
 --- Apache Maven
 
 Symlink: maven
-Symlinked binaries: mvn
+Supports: jrebel
+Installed launcher: mvn
+
+--- Atlassian Plugin SDK
+Symlink: atlassian-plugin-sdk
+Symlinked binaries: atlas-*
+
+--- Clojure
+Symlink: clojure
+Installed launcher: clojure
+
+--- Eclipse
+Installed launcher: starteclipse
+
+--- Liquibase
+Symlink: liquibase
+Installed launcher: liquibase
 
 --- JRebel
 
@@ -19,21 +35,17 @@ Symlink: jrebel
 --- Scala
 
 Symlink: scala
-Symlinked binaries: fsc, scala, scalac, scaladoc
-Symlinked files: VIM scala support files
+Symlinked binaries: fsc, sbaz, sbaz-setup, scala, scalac, scaladoc, scalap
 
 --- Simple Build Tool
 
 Symlink: sbt
 Supports: jrebel, spring-instrument
-Installed files: sbt launcher script
-
---- Simple Build Tool (experimental version)
-
-Symlink: xsbt
-Supports: jrebel, spring-instrument
-Installed files: xsbt launcher script
+Installed launcher: sbt
 
 --- Spring Instrument
 
 Symlink: spring-instrument
+
+--- VIM clojure
+Installed launcher: ng-vimclojure
