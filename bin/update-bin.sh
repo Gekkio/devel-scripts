@@ -49,9 +49,12 @@ update_symlink "atlassian-plugin-sdk/bin/atlas-unit-test" "bin"
 update_symlink "atlassian-plugin-sdk/bin/atlas-version" "bin"
 
 update_symlink "scala/bin/fsc" "bin"
+update_symlink "scala/bin/sbaz" "bin"
+update_symlink "scala/bin/sbaz-setup" "bin"
 update_symlink "scala/bin/scala" "bin"
 update_symlink "scala/bin/scalac" "bin"
 update_symlink "scala/bin/scaladoc" "bin"
+update_symlink "scala/bin/scalap" "bin"
 
 update_launcher "clojure" "clojure" "bin"
 update_launcher "eclipse" "starteclipse" "bin"
