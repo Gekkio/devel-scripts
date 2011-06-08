@@ -6,7 +6,7 @@ REQUIRED="$REQUIRED java"
 . $BASE/common/java
 . $BASE/common/jrebel
 
-SBT_LAUNCHER=$BASE/symlinks/sbt
+SBT_LAUNCHER=$BASE/symlinks/`basename $0`
 
 SPRING_INSTRUMENT=$BASE/symlinks/spring-instrument
 
