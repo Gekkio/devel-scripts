@@ -3,9 +3,9 @@
 BASE=`dirname $0`
 REQUIRED="$REQUIRED java maven"
 
-. $BASE/common/java
-. $BASE/common/maven
-. $BASE/common/jrebel
+. $BASE/.common/java
+. $BASE/.common/maven
+. $BASE/.common/jrebel
 
 MAVEN_OPTS="-XX:MaxPermSize=256m -Xmx256M $JAVA_OPTS $MAVEN_OPTS"
 

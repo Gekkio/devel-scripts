@@ -10,7 +10,7 @@ update_symlink() {
 
 update_launcher() {
   TARGET="$HOME/bin/symlinks/$1"
-  LAUNCHER="$HOME/bin/launchers/$2"
+  LAUNCHER="$HOME/bin/.launchers/$2"
   LINK="$HOME/$3"
   if [ -e "$TARGET" ]; then
     ln -f -v -s "$LAUNCHER" "$LINK"

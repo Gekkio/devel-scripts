@@ -3,8 +3,8 @@
 BASE=`dirname $0`
 REQUIRED="$REQUIRED java"
 
-. $BASE/common/java
-. $BASE/common/jrebel
+. $BASE/.common/java
+. $BASE/.common/jrebel
 
 SBT_LAUNCHER=$BASE/symlinks/`basename $0`
 

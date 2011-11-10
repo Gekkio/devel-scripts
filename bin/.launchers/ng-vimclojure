@@ -3,8 +3,8 @@
 BASE=`dirname $0`
 REQUIRED="$REQUIRED java clojure clojure-contrib"
 
-. $BASE/common/java
-. $BASE/common/notify
+. $BASE/.common/java
+. $BASE/.common/notify
 
 VIMCLOJURE_HOME=$BASE/symlinks/vimclojure
 

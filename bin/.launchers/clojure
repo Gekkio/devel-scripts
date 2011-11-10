@@ -3,10 +3,10 @@
 BASE=`dirname $0`
 REQUIRED="$REQUIRED java clojure"
 
-. $BASE/common/java
-. $BASE/common/clojure
-. $BASE/common/clojure-contrib
-. $BASE/common/jrebel
+. $BASE/.common/java
+. $BASE/.common/clojure
+. $BASE/.common/clojure-contrib
+. $BASE/.common/jrebel
 
 
 JAVA_OPTS="-XX:MaxPermSize=256m -Xmx256M $JAVA_OPTS"

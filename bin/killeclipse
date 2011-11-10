@@ -2,7 +2,7 @@
 
 BASE=`dirname $0`
 
-. $BASE/common/notify
+. $BASE/.common/notify
 
 PID=`ps -C java -o pid,command |grep 'org\.eclipse\.equinox\.launcher' | sed -e 's/^ *//g' | cut -f 1 -d ' '`
 
