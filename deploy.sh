@@ -4,6 +4,9 @@ echo "--- Deploying binaries to $HOME/bin"
 
 mkdir -p -v $HOME/bin
 cp -r -v bin/* $HOME/bin
+cp -r -v bin/.applications $HOME/bin
+cp -r -v bin/.common $HOME/bin
+cp -r -v bin/.launchers $HOME/bin
 
 echo "--- Running update-bin.sh"
 
