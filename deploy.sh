@@ -3,10 +3,10 @@
 echo "--- Deploying binaries to $HOME/bin"
 
 mkdir -p -v $HOME/bin
-cp -r -v bin/* $HOME/bin
-cp -r -v bin/.applications $HOME/bin
-cp -r -v bin/.common $HOME/bin
-cp -r -v bin/.launchers $HOME/bin
+cp -v bin/* $HOME/bin
+cp -T -r -v bin/applications $HOME/bin/.applications
+cp -T -r -v bin/common $HOME/bin/.common
+cp -T -r -v bin/launchers $HOME/bin/.launchers
 
 echo "--- Running update-bin.sh"
 

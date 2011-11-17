@@ -2,7 +2,7 @@
 
 update_application() {
 	TARGET="$HOME/bin/symlinks/$1"
-	ENTRY="$HOME/bin/.applications/$2"
+	ENTRY="$HOME/bin/.applications/$2.desktop"
   LINK="$HOME/.local/share/applications"
 	if [ -e "$TARGET" ]; then
 		mkdir -p "$LINK"
