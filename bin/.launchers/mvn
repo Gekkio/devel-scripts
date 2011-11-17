@@ -7,7 +7,7 @@ REQUIRED="$REQUIRED java maven"
 . $BASE/.common/maven
 . $BASE/.common/jrebel
 
-MAVEN_OPTS="-XX:MaxPermSize=256m -Xmx256M $JAVA_OPTS $MAVEN_OPTS"
+MAVEN_OPTS="-XX:MaxPermSize=256m -Xmx512M $JAVA_OPTS $MAVEN_OPTS"
 
 if [ -f "$JREBEL_LIB" ]; then
   MAVEN_OPTS="-noverify -javaagent:$JREBEL_LIB $MAVEN_OPTS"
