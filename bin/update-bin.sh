@@ -3,10 +3,11 @@
 update_application() {
 	TARGET="$HOME/bin/symlinks/$1"
 	ENTRY="$HOME/bin/.applications/$2.desktop"
-  LINK="$HOME/.local/share/applications"
+  DIR="$HOME/.local/share/applications"
 	if [ -e "$TARGET" ]; then
-		mkdir -p "$LINK"
-    ln -f -v -s "$ENTRY" "$LINK"
+		mkdir -p "$DIR"
+		HOME_ESCAPED=`echo "$HOME" | sed -e 's/\//\\\\\//g'`
+		sed -e 's/$HOME/'"$HOME_ESCAPED"'/g' "$ENTRY" > "$DIR/$2.desktop"
   fi
 }
 
