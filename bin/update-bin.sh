@@ -59,8 +59,6 @@ update_symlink "atlassian-plugin-sdk/bin/atlas-unit-test"
 update_symlink "atlassian-plugin-sdk/bin/atlas-version"
 
 update_symlink "scala/bin/fsc"
-update_symlink "scala/bin/sbaz"
-update_symlink "scala/bin/sbaz-setup"
 update_symlink "scala/bin/scala"
 update_symlink "scala/bin/scalac"
 update_symlink "scala/bin/scaladoc"
