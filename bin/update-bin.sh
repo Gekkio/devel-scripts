@@ -1,31 +1,35 @@
 #!/bin/sh
 
 update_application() {
-	TARGET="$HOME/bin/symlinks/$1"
-	ENTRY="$HOME/bin/.applications/$2.desktop"
+  TARGET="$HOME/bin/symlinks/$1"
+  ENTRY="$HOME/bin/.applications/$2.desktop"
   DIR="$HOME/.local/share/applications"
-	if [ -e "$TARGET" ]; then
-		mkdir -p "$DIR"
-		HOME_ESCAPED=`echo "$HOME" | sed -e 's/\//\\\\\//g'`
-		sed -e 's/$HOME/'"$HOME_ESCAPED"'/g' "$ENTRY" > "$DIR/$2.desktop"
+  if [ -e "$TARGET" ]; then
+    mkdir -p "$DIR"
+    HOME_ESCAPED=`echo "$HOME" | sed -e 's/\//\\\\\//g'`
+    sed -e 's/$HOME/'"$HOME_ESCAPED"'/g' "$ENTRY" > "$DIR/$2.desktop"
   fi
 }
 
 update_symlink() {
   TARGET="$HOME/bin/symlinks/$1"
   LINK="$HOME/bin"
-	if [ -e "$TARGET" ]; then
-		mkdir -p "$LINK"
+  if [ -e "$TARGET" ]; then
+    mkdir -p "$LINK"
     ln -f -v -s "$TARGET" "$LINK"
   fi
 }
 
 update_launcher() {
   TARGET="$HOME/bin/symlinks/$1"
-  LAUNCHER="$HOME/bin/.launchers/$2"
+  if [ -z "$2" ]; then
+    LAUNCHER="$HOME/bin/.launchers/$1"
+  else
+    LAUNCHER="$HOME/bin/.launchers/$2"
+  fi
   LINK="$HOME/bin"
   if [ -e "$TARGET" ]; then
-		mkdir -p "$LINK"
+    mkdir -p "$LINK"
     ln -f -v -s "$LAUNCHER" "$LINK"
   fi
 }
@@ -64,11 +68,10 @@ update_symlink "scala/bin/scalac"
 update_symlink "scala/bin/scaladoc"
 update_symlink "scala/bin/scalap"
 
-update_launcher "clojure" "clojure"
-update_launcher "eclipse" "starteclipse"
-update_launcher "liquibase" "liquibase"
+update_launcher "apktool"
+update_launcher "eclipse"
+update_launcher "liquibase"
 update_launcher "maven" "mvn"
-update_launcher "sbt" "sbt"
-update_launcher "vimclojure" "ng-vimclojure"
+update_launcher "sbt"
 
 update_application "eclipse" "eclipse"

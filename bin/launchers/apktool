@@ -1,0 +1,16 @@
+#!/bin/sh
+
+BASE=`dirname $0`
+REQUIRED="$REQUIRED java"
+
+. $BASE/.common/java
+. $BASE/.common/notify
+
+APKTOOL_HOME=$BASE/symlinks/apktool
+
+if [ ! -d "$APKTOOL_HOME" ]; then
+  notify "Not a valid apktool distribution: $APKTOOL_HOME"
+  exit 1
+fi
+
+$JAVA_CMD $JAVA_OPTS -jar "$APKTOOL_HOME"/apktool.jar $@
