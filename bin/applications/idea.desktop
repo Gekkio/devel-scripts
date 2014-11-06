@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=IntelliJ IDEA
+Icon=$HOME/bin/symlinks/idea/bin/idea.png
+Exec=$HOME/bin/symlinks/idea/bin/idea.sh
+Categories=Development;IDE;Java;

@@ -75,3 +75,4 @@ update_launcher "maven" "mvn"
 update_launcher "sbt"
 
 update_application "eclipse" "eclipse"
+update_application "idea" "idea"
