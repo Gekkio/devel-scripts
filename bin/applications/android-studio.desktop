@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=Android Studio
+Icon=$HOME/bin/symlinks/android-studio/bin/idea.png
+Exec=$HOME/bin/symlinks/android-studio/bin/studio.sh
+Categories=Development;IDE;Java;
