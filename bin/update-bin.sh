@@ -1,41 +1,40 @@
-#!/bin/sh
+#!/bin/bash
+
+set -euo pipefail
+
+BINDIR=$(readlink -f $(dirname $0))
 
 update_application() {
-  TARGET="$HOME/bin/symlinks/$1"
-  ENTRY="$HOME/bin/.applications/$2.desktop"
-  DIR="$HOME/.local/share/applications"
-  if [ -e "$TARGET" ]; then
-    mkdir -p "$DIR"
-    HOME_ESCAPED=`echo "$HOME" | sed -e 's/\//\\\\\//g'`
-    sed -e 's/$HOME/'"$HOME_ESCAPED"'/g' "$ENTRY" > "$DIR/$2.desktop"
+  TARGET="${BINDIR}/symlinks/${1}"
+  ENTRY="${BINDIR}/.applications/${2}.desktop"
+  OUT_DIR="${HOME}/.local/share/applications"
+  OUT_ENTRY="${OUT_DIR}/${2}.desktop"
+  if [ -e "${TARGET}" ]; then
+    mkdir -p "${OUT_DIR}"
+    HOME_ESCAPED=`echo "${HOME}" | sed -e 's/\//\\\\\//g'`
+    sed -e 's/$HOME/'"${HOME_ESCAPED}"'/g' "${ENTRY}" > "${OUT_ENTRY}"
+    echo "'${ENTRY}' -> '${OUT_ENTRY}'"
   fi
 }
 
 update_symlink() {
-  TARGET="$HOME/bin/symlinks/$1"
-  LINK="$HOME/bin"
-  if [ -e "$TARGET" ]; then
-    mkdir -p "$LINK"
-    ln -f -v -s "$TARGET" "$LINK"
+  TARGET="${BINDIR}/symlinks/${1}"
+  if [ -e "${TARGET}" ]; then
+    ln -fvs "${TARGET}" "${BINDIR}"
   fi
 }
 
 update_launcher() {
-  TARGET="$HOME/bin/symlinks/$1"
-  if [ -z "$2" ]; then
-    LAUNCHER="$HOME/bin/.launchers/$1"
-  else
-    LAUNCHER="$HOME/bin/.launchers/$2"
-  fi
-  LINK="$HOME/bin"
-  if [ -e "$TARGET" ]; then
-    mkdir -p "$LINK"
-    ln -f -v -s "$LAUNCHER" "$LINK"
+  TARGET="${BINDIR}/symlinks/${1}"
+  LAUNCHER_NAME="${2:-${1}}"
+  LAUNCHER="${BINDIR}/.launchers/${LAUNCHER_NAME}"
+  if [ -e "${TARGET}" ]; then
+    ln -fvs "${LAUNCHER}" "${BINDIR}"
   fi
 }
 
-mkdir -p -v $HOME/bin/packages
-mkdir -p -v $HOME/bin/symlinks
+mkdir -pv "${BINDIR}/packages"
+mkdir -pv "${BINDIR}/symlinks"
 
 update_symlink "ant/bin/ant"
 

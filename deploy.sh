@@ -1,19 +1,18 @@
-#!/bin/sh
+#!/bin/bash
 
-echo "--- Deploying binaries to $HOME/bin"
+set -euo pipefail
 
-mkdir -p -v $HOME/bin
-cp -v bin/* $HOME/bin
-cp -T -r -v bin/applications $HOME/bin/.applications
-cp -T -r -v bin/common $HOME/bin/.common
-cp -T -r -v bin/launchers $HOME/bin/.launchers
+TARGET="${HOME}/bin"
+
+echo "--- Deploying binaries to ${TARGET}"
+
+mkdir -pv "${TARGET}"
+find bin -maxdepth 1 -type f -not -name '\.*' -exec cp -uv {} "${TARGET}/" \;
+
+cp -Truv bin/applications "${TARGET}/.applications"
+cp -Truv bin/common "${TARGET}/.common"
+cp -Truv bin/launchers "${TARGET}/.launchers"
 
 echo "--- Running update-bin.sh"
 
-which update-bin.sh > /dev/null
-
-if [ "$?" = "0" ]; then
-  update-bin.sh
-else
-  echo "Could not find update-bin.sh. Make sure $HOME/bin is in your PATH environment variable!"
-fi
+"${TARGET}/update-bin.sh"
