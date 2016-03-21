@@ -75,5 +75,8 @@ update_launcher "maven" "mvn"
 update_launcher "sbt"
 
 update_application "android-studio" "android-studio"
+update_application "arduino" "arduino"
+update_application "dbeaver" "dbeaver"
+update_application "eagle" "eagle"
 update_application "eclipse" "eclipse"
 update_application "idea" "idea"

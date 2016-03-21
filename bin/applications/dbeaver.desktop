@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=DBeaver
+Icon=$HOME/bin/symlinks/dbeaver/icon.xpm
+Exec=$HOME/bin/symlinks/dbeaver/dbeaver
+Categories=Development;Database;IDE;Java

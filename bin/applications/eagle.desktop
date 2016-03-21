@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=Eagle
+Icon=$HOME/bin/symlinks/eagle/bin/eagleicon50.png
+Exec=$HOME/bin/symlinks/eagle/bin/eagle
+Categories=Development;Electronics
