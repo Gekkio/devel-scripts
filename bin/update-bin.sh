@@ -6,9 +6,10 @@ BINDIR=$(readlink -f $(dirname $0))
 
 update_application() {
   TARGET="${BINDIR}/symlinks/${1}"
-  ENTRY="${BINDIR}/.applications/${2}.desktop"
+  NAME="${2:-${1}}"
+  ENTRY="${BINDIR}/.applications/${NAME}.desktop"
   OUT_DIR="${HOME}/.local/share/applications"
-  OUT_ENTRY="${OUT_DIR}/${2}.desktop"
+  OUT_ENTRY="${OUT_DIR}/${NAME}.desktop"
   if [ -e "${TARGET}" ]; then
     mkdir -p "${OUT_DIR}"
     HOME_ESCAPED=`echo "${HOME}" | sed -e 's/\//\\\\\//g'`
@@ -26,8 +27,8 @@ update_symlink() {
 
 update_launcher() {
   TARGET="${BINDIR}/symlinks/${1}"
-  LAUNCHER_NAME="${2:-${1}}"
-  LAUNCHER="${BINDIR}/.launchers/${LAUNCHER_NAME}"
+  NAME="${2:-${1}}"
+  LAUNCHER="${BINDIR}/.launchers/${NAME}"
   if [ -e "${TARGET}" ]; then
     ln -fvs "${LAUNCHER}" "${BINDIR}"
   fi
@@ -73,10 +74,10 @@ update_launcher "liquibase"
 update_launcher "maven" "mvn"
 update_launcher "sbt"
 
-update_application "android-studio" "android-studio"
-update_application "arduino" "arduino"
-update_application "dbeaver" "dbeaver"
-update_application "eagle" "eagle"
-update_application "eclipse" "eclipse"
-update_application "idea" "idea"
-update_application "webstorm" "webstorm"
+update_application "android-studio"
+update_application "arduino"
+update_application "dbeaver"
+update_application "eagle"
+update_application "eclipse"
+update_application "idea"
+update_application "webstorm"
