@@ -76,6 +76,7 @@ update_launcher "sbt"
 
 update_application "android-studio"
 update_application "arduino"
+update_application "clion"
 update_application "dbeaver"
 update_application "eagle"
 update_application "eclipse"

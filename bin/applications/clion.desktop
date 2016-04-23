@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=CLion
+Icon=$HOME/bin/symlinks/clion/bin/clion.svg
+Exec=$HOME/bin/symlinks/clion/bin/clion.sh %f
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-clion
